@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-#
-import chardet
 # 平均每个字敲击键盘次数
 
 

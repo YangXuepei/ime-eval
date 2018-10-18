@@ -1,15 +1,13 @@
 # -*- coding:utf-8 -*-#
 import csv
-import chardet
-import eval_by_avg_length
-import eval_by_left_right_exchange
-
+import eval_by_avg_length as al
+import eval_by_left_right_exchange as lr
 
 
 def eval(codedir, testdata, eval_standard):
     switchers = {
-        '1': eval_by_avg_length.eval_by_avg_length,
-        '2': eval_by_left_right_exchange.eval_by_left_right_exchange
+        '1': al.eval_by_avg_length,
+        '2': lr.eval_by_left_right_exchange
     }
     func = switchers.get(eval_standard)
     func(codedir, testdata)
