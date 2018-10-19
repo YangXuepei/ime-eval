@@ -18,7 +18,8 @@ def eval_by_left_right_exchange(code_dir, test_data):
     code = ''
     # print chardet.detect(test_data)
     for ch in test_data:
-        code += code_dir[ch]
+        if ch in code_dir:
+            code += code_dir[ch]
     new_code = ''
     for ch in code:
         if ch in left:

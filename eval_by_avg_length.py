@@ -8,7 +8,8 @@ def eval_by_avg_length(code_dir, test_data):
     sum = 0.0
     # print chardet.detect(test_data)
     for ch in test_data:
-        length += len(code_dir[ch])
-        sum += 1
+        if ch in code_dir:
+            length += len(code_dir[ch])
+            sum += 1
     print("Evaluating by [1] average code length:")
     print("    The average code length is %f" % (length / sum))
