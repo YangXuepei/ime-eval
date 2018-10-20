@@ -10,13 +10,13 @@ For decoupling purpose, different layers are inclined to be implemented within d
 
 ## How to use
 
-First, make sure Python3 is installed and added to `PATH`. The popular package manage system [Anaconda](https://www.anaconda.com/) is highly recommended.
+First, make sure Python2 is installed and added to `PATH`. If you have python3 installed already and don't want to messy up with the environment thing, then the popular package manage system [Anaconda](https://www.anaconda.com/) is highly recommended.
 
 ```bash
-$ python main.py encode_table
+$ python main.py
 ```
 
-The output is ...
+Follow the interactive command line prompt.
 
 ## Feature in progress
 
