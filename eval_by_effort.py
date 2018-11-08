@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-#
 #当量评估
-effort = {
+key_effort = {
     'a': 0,
     's': 0,
     'd': 0,
@@ -29,6 +29,18 @@ effort = {
     'p': 2,
 }
 
+
+
+def eval_layout_LUTP_effort():
+
+
+def eval_layout_effort():
+
+def eval_key_effort():
+
+def eval_pinyin_effort():
+
+
 def eval_by_effort(code_dir, test_data):
     code = ''
     sum = 0.0
@@ -42,4 +54,3 @@ def eval_by_effort(code_dir, test_data):
         sum += effort[i]
     print("Evaluating by [3] effort:")
     print('     The sum effort per character is %f'%(sum/num))
-

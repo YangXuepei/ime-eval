@@ -1,6 +1,9 @@
 # -*- coding:utf-8 -*-#
 from enum import Enum
 
+domain = [[1, 26-i] for i in range(26)]
+
+key_list = [Key(0,1,1),Key()]
 
 class Hand(Enum):
     left = 0
@@ -9,8 +12,8 @@ class Hand(Enum):
 
 class Line(Enum):
     up = 1
-    mid = 0
-    down = 1
+    mid = 2
+    down = 3
 
 
 class Key:
@@ -40,11 +43,12 @@ class Layout:
             self.map[letterA] = self.map[letterB]
             self.map[letterB] = tmp
 
+    def LUTP_format():
+
+
+    def print_layout():
+
 
 test = Layout()
 test.add_key('a', Key(Hand.left, Line.mid, 4))
 print(test.map['a'].pos)
-
-
-
-
