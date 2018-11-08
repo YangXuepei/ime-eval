@@ -2,8 +2,15 @@
 import basic as b
 import read_code_and_testdata as r
 
-
-code_dir = r.readfile("data\code_table.csv")
+print("we have these tables:")
+print("     1. keke five ")
+print("     2. quanpin ")
+code_table_type = raw_input("Pleasr choose a code table:")
+switch = {
+    '1' : "data\keke_code_table.csv",
+    '2' : "data\quanpin_code_table.csv"
+}
+code_dir = r.readfile(switch.get(code_table_type))
 test_data = r.load_test("data\\traintext.txt")
 
 eval_type = None

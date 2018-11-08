@@ -3,7 +3,7 @@ from enum import Enum
 
 domain = [[1, 26-i] for i in range(26)]
 
-key_list = [Key(0,1,1),Key()]
+#key_list = [Key(0,1,1),Key()]
 
 class Hand(Enum):
     left = 0
