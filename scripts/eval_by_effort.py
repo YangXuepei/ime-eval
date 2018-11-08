@@ -29,26 +29,14 @@ key_effort = {
     'p': 2,
 }
 
-
-
-#def eval_layout_LUTP_effort():
-
-
-#def eval_layout_effort():
-
-#def eval_key_effort():
-
-#def eval_pinyin_effort():
-
-
-def eval_by_effort(code_dir, test_data):
+def eval_by_effort(code_table, train_text):
     code = ''
     sum = 0.0
     num = 0
-    # print chardet.detect(test_data)
-    for ch in test_data:
-        if ch in code_dir:
-            code += code_dir[ch]
+    # print chardet.detect(train_text)
+    for ch in train_text:
+        if ch in code_table:
+            code += code_table[ch]
             num += 1
     for i in code:
         sum += key_effort[i]

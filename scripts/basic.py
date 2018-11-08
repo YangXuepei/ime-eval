@@ -5,14 +5,14 @@ import eval_by_left_right_exchange as lr
 import eval_by_effort as ee
 
 
-def eval(codedir, testdata, eval_standard):
+def eval(code_table, train_text, eval_standard):
     switchers = {
         '1': al.eval_by_avg_length,
         '2': lr.eval_by_left_right_exchange,
         '3': ee.eval_by_effort
     }
     func = switchers.get(eval_standard)
-    func(codedir, testdata)
+    func(code_table, train_text)
 
 
 def show_options():
@@ -21,7 +21,3 @@ def show_options():
     print("    [1] average code length")
     print("    [2] left-right exchange frequency")
     print("    [3] effort")
-
-
-def eval_by_(code_dir):
-    return 0

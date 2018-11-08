@@ -14,12 +14,12 @@ right4 = ['0', 'p', ';', '/']
 right = right1 + right2 + right3 + right4
 
 
-def eval_by_left_right_exchange(code_dir, test_data):
+def eval_by_left_right_exchange(code_table, train_text):
     code = ''
-    # print chardet.detect(test_data)
-    for ch in test_data:
-        if ch in code_dir:
-            code += code_dir[ch]
+    # print chardet.detect(train_text)
+    for ch in train_text:
+        if ch in code_table:
+            code += code_table[ch]
     new_code = ''
     for ch in code:
         if ch in left:
@@ -34,4 +34,3 @@ def eval_by_left_right_exchange(code_dir, test_data):
             last = ch
     print("Evaluating by [2] left-right exchange frequency:")
     print("    The left-right exchange frequency is %f " %(change_time/len(new_code)))
-
