@@ -3,11 +3,9 @@ import basic as b
 import read_code_and_testdata as r
 
 
-code_dir = r.readfile("testdata.csv")
-test_data = r.load_test("test.txt")
+code_dir = r.readfile("data\code_table.csv")
+test_data = r.load_test("data\\traintext.txt")
 
-#code_dir = r.readfile("single.csv")
-#test_data = r.load_test("beiying.txt") # 测试数据：朱自清散文《背影》
 eval_type = None
 while eval_type != "q":
     if eval_type is not None:

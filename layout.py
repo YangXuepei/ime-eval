@@ -43,10 +43,10 @@ class Layout:
             self.map[letterA] = self.map[letterB]
             self.map[letterB] = tmp
 
-    def LUTP_format():
+    #def LUTP_format():
 
 
-    def print_layout():
+    #def print_layout():
 
 
 test = Layout()

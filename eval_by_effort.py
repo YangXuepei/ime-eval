@@ -31,14 +31,14 @@ key_effort = {
 
 
 
-def eval_layout_LUTP_effort():
+#def eval_layout_LUTP_effort():
 
 
-def eval_layout_effort():
+#def eval_layout_effort():
 
-def eval_key_effort():
+#def eval_key_effort():
 
-def eval_pinyin_effort():
+#def eval_pinyin_effort():
 
 
 def eval_by_effort(code_dir, test_data):
@@ -51,6 +51,6 @@ def eval_by_effort(code_dir, test_data):
             code += code_dir[ch]
             num += 1
     for i in code:
-        sum += effort[i]
+        sum += key_effort[i]
     print("Evaluating by [3] effort:")
     print('     The sum effort per character is %f'%(sum/num))
