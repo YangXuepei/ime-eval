@@ -55,12 +55,12 @@ class Layout:
     #         self.map[letterA] = self.map[letterB]
     #         self.map[letterB] = tmp
 
-    def print_layout():
+# def print_layout():
 
 
 def test():
     test = Layout()
-    test.add_key('a', Key(Hand.left, Line.mid, 4))
+    test.add_key('a', Key(Hand.left, Row.mid, 4))
     print(test.map['a'].pos)
 
-test()
+#test()
