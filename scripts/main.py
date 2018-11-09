@@ -7,8 +7,8 @@ print("     1. keke five ")
 print("     2. quanpin ")
 code_table_type = raw_input("Pleasr choose a code table:")
 switch = {
-    '1' : "..\\data\\keke_code_table.csv",
-    '2' : "..\\data\\quanpin_code_table.csv"
+    '1': "..\\data\\keke_code_table.csv",
+    '2': "..\\data\\quanpin_code_table.csv"
 }
 code_table = r.readfile(switch.get(code_table_type))
 train_text = r.load_test("..\\data\\train_text.txt")

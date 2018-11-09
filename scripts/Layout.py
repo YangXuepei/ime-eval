@@ -7,6 +7,9 @@ domain = [[1, 26-i] for i in range(26)]
 #26 English letters sorted based on their frequency in Chinese writing
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+r = range(1,27)
+
+
 class Hand(Enum):
     left = 0
     right = 1
@@ -38,29 +41,39 @@ class Layout:
     def __init__(self, LUTP):
         self.mapping = {}
         self.LUTP = LUTP
+        for i in range(26):
+            key = letters[i]
+            position = r[LUTP[i]-1]
+            r.remove(position)
+            self.mapping[key] = position
+
+
 
     def is_complete(self):
-        if len(map) == 26:
+        if len(self.mapping) == 26:
             return True
         else:
             return False
 
     def add_key(self, letter, key):
-        if not letter in self.map:
-            self.map[letter] = key
+        if not letter in self.mapping:
+            self.mapping[letter] = key
 
-    # def exchangeKey(self, letterA, letterB):
-    #     if letterA in self.map and letterB in self.map:
-    #         tmp = self.map[letterA]
-    #         self.map[letterA] = self.map[letterB]
-    #         self.map[letterB] = tmp
+    def exchange_key(self, letterA, letterB):
+        if letterA in self.mapping and letterB in self.mapping:
+            tmp = self.mapping[letterA]
+            self.mapping[letterA] = self.mapping[letterB]
+            self.mapping[letterB] = tmp
 
-# def print_layout():
+    def print_layout(self):
+        print self.mapping
 
 
 def test():
-    test = Layout()
-    test.add_key('a', Key(Hand.left, Row.mid, 4))
-    print(test.map['a'].pos)
+    a = [1 for i in range(26)]
+    t = Layout(a)
+    t.print_layout()
+    print t.is_complete()
+    print(t.mapping['a'])
 
 #test()
