@@ -47,8 +47,6 @@ class Layout:
             r.remove(position)
             self.mapping[key] = position
 
-
-
     def is_complete(self):
         if len(self.mapping) == 26:
             return True

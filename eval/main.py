@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-#
-import basic as b
+from eval import basic as b
 import read_code_table_and_train_text as r
 
 print("we have these tables:")
