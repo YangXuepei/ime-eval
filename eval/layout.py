@@ -4,7 +4,7 @@ from enum import Enum
 #domain list that specifies the domain of every elements of LUTP format.
 domain = [[1, 26-i] for i in range(26)]
 
-#26 English letters sorted based on their frequency in Chinese writing
+#26 English letters
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 r = range(1,27)
@@ -41,7 +41,7 @@ class Layout:
     def __init__(self, LUTP):
         self.mapping = {}
         self.LUTP = LUTP
-        for i in range(26):
+        for i in range(0,26):
             key = letters[i]
             position = r[LUTP[i]-1]
             r.remove(position)
@@ -66,6 +66,9 @@ class Layout:
     def print_layout(self):
         print self.mapping
 
+    def get_mapping(self):
+        return self.mapping
+
 
 def test():
     a = [1 for i in range(26)]
@@ -73,5 +76,6 @@ def test():
     t.print_layout()
     print t.is_complete()
     print(t.mapping['a'])
+
 
 #test()
