@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-#
 import gradient_descend_optimization as gd
-import eval.eval_by_effort_quanpin as ebe
+import eval.eval_by_effort as ebe
 import eval.layout as lyt
 #import genetic_optimization as gen
 #import simulated_annealing_optimization as sa
@@ -16,11 +16,11 @@ switch = {
     '1': "gd"
 }
 
-best_config, min_cost = gd.gradient_descend(lyt.domain, ebe.eval_layout_LUTP_effort)
+best_config = gd.gradient_descend(lyt.domain, ebe.eval_by_effort)
 
 layout = lyt.Layout(best_config)
 layout.print_layout()
-print("Cost: ", min_cost, "\n")
+print("Cost: ", ebe.eval_by_effort(best_config), "\n")
 
 # save the best result into local persistent storage.
 print "persistent_result"

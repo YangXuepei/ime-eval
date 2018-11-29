@@ -1,45 +1,76 @@
 # -*- coding:utf-8 -*-#
-#当量评估
+import read_code_table_and_train_text as r
+import layout as lyt
+
+all_pinyin = r.load_all_pinyin("..\\data\\all_pinyin.txt")
+# 所有unique的拼音组合
 key_effort = {
-    'a': 0,
-    's': 0,
-    'd': 0,
-    'f': 0,
-    'g': 2,
-    'h': 2,
-    'j': 0,
-    'k': 0,
-    'l': 0,
-    'z': 2,
-    'x': 2,
-    'c': 2,
-    'v': 2,
-    'b': 3.5,
-    'n': 2,
-    'm': 2,
-    'q': 2,
-    'w': 2,
-    'e': 2,
-    'r': 2,
-    't': 2,
-    'y': 3,
-    'u': 2,
-    'i': 2,
-    'o': 2,
-    'p': 2,
+    1: 1,   2: 1,   3: 1,            10: 0.8,   11: 0.8,    12: 0.8,
+    4: 1,   5: 0,   6: 1,            13: 0.8,   14: 0,      15: 0.8,
+    7: 2,   8: 1.5, 9: 1.5,          16: 1.3,   17: 1.3,    18: 1.8
 }
 
-def eval_by_effort(code_table, train_text):
-    code = ''
-    sum = 0.0
-    num = 0
-    # print chardet.detect(train_text)
+def eval_layout_LUTP_effort(t):
+
+    code_table = r.readfile("..\\data\\quanpin_code_table.csv")
+    train_text = r.load_test("..\\data\\train_text.txt")
+
+    quanpin_code_effort_table = cal_basic_effort(t)
+    quanpin_left_right_effort_table = cal_left_right_effort(t)
+    quanpin_code_frequency_table = cal_frequency(train_text, code_table)
+    total_effort = 0.0
+    basic_effort = 0.0
+    for i in range(len(all_pinyin)):
+        basic_effort += quanpin_code_effort_table[all_pinyin[i]] * quanpin_code_frequency_table[all_pinyin[i]]
+
+    left_right_effort = 0.0
+    for i in range(len(all_pinyin)):
+        left_right_effort += quanpin_left_right_effort_table[all_pinyin[i]] * quanpin_code_frequency_table[all_pinyin[i]]
+
+    total_effort = basic_effort + left_right_effort
+
+    return total_effort
+
+
+def cal_frequency(train_text, code_table):
+    quanpin_code_frequency_table = dict.fromkeys(all_pinyin, 0)
     for ch in train_text:
         if ch in code_table:
-            code += code_table[ch]
-            num += 1
-    for i in code:
-        sum += key_effort[i]
-    print("Evaluating by [3] effort:")
-    print('     The sum effort per character is %f'%(sum/num))
+            pinyin = code_table[ch]
+            quanpin_code_frequency_table[pinyin] += 1
+    return quanpin_code_frequency_table
 
+
+def cal_basic_effort(l):
+    quanpin_code_effort_table = dict.fromkeys(all_pinyin, 0)
+    mapping = l.get_mapping()
+    for pinyin in all_pinyin:
+        for c in pinyin:
+            key = mapping[c]
+            quanpin_code_effort_table[pinyin] += key_effort[key]
+
+    #print quanpin_code_effort_table
+    return quanpin_code_effort_table
+
+def cal_left_right_effort(l):
+    quanpin_left_right_effort_table = dict.fromkeys(all_pinyin, 0)
+    mapping = l.get_mapping()
+    for pinyin in all_pinyin:
+        count = 0
+        last = 0 if mapping[pinyin[0]] > 9 else 1
+        for c in pinyin:
+            hand = 0 if mapping[pinyin[0]] > 9 else 1
+            count += 1 if hand == last else 0
+        quanpin_left_right_effort_table[pinyin] = count
+
+    return quanpin_left_right_effort_table
+
+
+def eval_by_effort(domain):
+    t = lyt.Layout(domain)
+    t.print_layout()
+    print eval_layout_LUTP_effort(t)
+
+
+#a = [1 for i in range(18)]
+#eval_by_effort(a)
