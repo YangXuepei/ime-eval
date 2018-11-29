@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-#
 import random
+from helper import *
 
 # Note that this python file should be totally blinded with any practical details, for generic purpose.
 # IN: domain specification, cost function
@@ -13,16 +14,16 @@ def gradient_descend(domain, costfunc):
     for i in range(len(domain)):
         config.append(random.randint(domain[i][0], domain[i][1]))
 
-    best_config = config
-    min_cost = costfunc(config)
+    best_config_before_run = config
+    best_config_after_run = compare_with_neighbors(best_config_before_run, domain, costfunc)
 
     # compare current configuration with its neighbors, substitute it with superior neighbor, if any.
     # until no better neighbor is found.
-    while 1:
-        best_config, min_cost = compare_with_neighbors(config, domain, costfunc)
-        if best_config == config:
-            break
-    return best_config, min_cost
+    while best_config_after_run != best_config_before_run:
+        best_config_before_run = best_config_after_run
+        best_config_after_run = compare_with_neighbors(best_config_before_run, domain, costfunc)
+        #print("Current best config: ", best_config_after_run, "min cost: ", costfunc(best_config_after_run))
+    return best_config_after_run, costfunc(best_config_after_run)
 
 
 def compare_with_neighbors(config, domain, costfunc):
@@ -30,22 +31,11 @@ def compare_with_neighbors(config, domain, costfunc):
     min_cost = costfunc(config)
     for neighbor in generate_neighbors(config, domain):
         neighbor_cost = costfunc(neighbor)
-        if neighbor_cost <= min_cost:
-            # Note that we allow shifting to neighbor even if the cost are equal.
+        if neighbor_cost < min_cost: # Note that we allow shifting to neighbor even if the cost are equal.
             min_cost = neighbor_cost
             best_config = neighbor
-    return best_config, min_cost
+            #print("Found better neighbor: ", best_config, "Cost: ", min_cost)
+    return best_config
 
 
-def generate_neighbors(config, domain):
-    neighbors = []
-    for i in range(len(config)):
-        mutated = config[i] + random.choice([-1,1])
-        if mutated < domain[i][0]:
-            mutated = domain[i][0]
-        if mutated > domain[i][1]:
-            mutated = domain[i][1]
 
-    new_neighbor = config[:i-1].append(mutated).extend(config[i+1:])
-    neighbors.append(new_neighbor)
-    return neighbors
