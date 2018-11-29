@@ -17,8 +17,10 @@ class Layout:
         self.mapping = {}
         self.LUTP = LUTP
         temp = {}
+        r = range(1, 19)
         for i in range(18):
             key = combination[i]
+            #t = LUTP[i] - 1
             position = r[LUTP[i]-1]
             r.remove(position)
             temp[key] = position
@@ -46,7 +48,7 @@ class Layout:
     def print_layout(self):
         print self.mapping
 
-    def get_mapping(self):
+    def get_layout(self):
         return self.mapping
 
     def print_LUPT(self):
@@ -54,10 +56,11 @@ class Layout:
 
 
 def test():
-    a = [1, 14, 15, 1, 8, 6, 5, 10, 3, 7, 1, 5, 6, 1, 4, 2, 1, 1]
+    a = [14, 5, 5, 9, 8, 1, 2, 2, 3, 4, 1, 3, 3, 2, 2, 2, 2, 1]
     t = Layout(a)
-    t.print_layout()
+    s = str(t.get_layout())
+    print s
     t.print_LUPT()
 
 
-#test()
+test()

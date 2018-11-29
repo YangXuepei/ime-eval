@@ -43,7 +43,7 @@ def cal_frequency(train_text, code_table):
 
 def cal_basic_effort(l):
     quanpin_code_effort_table = dict.fromkeys(all_pinyin, 0)
-    mapping = l.get_mapping()
+    mapping = l.get_layout()
     for pinyin in all_pinyin:
         for c in pinyin:
             key = mapping[c]
@@ -54,7 +54,7 @@ def cal_basic_effort(l):
 
 def cal_left_right_effort(l):
     quanpin_left_right_effort_table = dict.fromkeys(all_pinyin, 0)
-    mapping = l.get_mapping()
+    mapping = l.get_layout()
     for pinyin in all_pinyin:
         count = 0
         last = 0 if mapping[pinyin[0]] > 9 else 1
@@ -68,8 +68,6 @@ def cal_left_right_effort(l):
 
 def eval_by_effort(domain):
     t = lyt.Layout(domain)
-    print domain
-    t.print_layout()
     result =  eval_layout_LUTP_effort(t)
     return result
 
