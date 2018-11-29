@@ -19,7 +19,8 @@ switch = {
 best_config = gd.gradient_descend(lyt.domain, ebe.eval_by_effort)
 
 layout = lyt.Layout(best_config)
-layout.print_layout()
+#layout.print_layout()
+
 print("Cost: ", ebe.eval_by_effort(best_config), "\n")
 
 # save the best result into local persistent storage.

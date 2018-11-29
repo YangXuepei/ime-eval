@@ -68,9 +68,14 @@ def cal_left_right_effort(l):
 
 def eval_by_effort(domain):
     t = lyt.Layout(domain)
+    print domain
     t.print_layout()
-    print eval_layout_LUTP_effort(t)
+    result =  eval_layout_LUTP_effort(t)
+    return result
 
 
-#a = [1 for i in range(18)]
-#eval_by_effort(a)
+def test():
+    a = [1, 14, 15, 1, 8, 6, 5, 10, 3, 7, 1, 5, 6, 1, 4, 2, 1, 1]
+    eval_by_effort(a)
+
+#test()

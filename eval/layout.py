@@ -2,7 +2,7 @@
 from enum import Enum
 
 #domain list that specifies the domain of every elements of LUTP format.
-#domain = [[1, 18-i] for i in range(18)]
+domain = [[1, 18-i] for i in range(18)]
 
 #26 English letters
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -11,7 +11,6 @@ combination = ['i','a','n','e','u','h','o','g','d','s','zy','lj','bw','xm','tc',
 
 r = range(1,19)
 
-print r
 
 class Layout:
     def __init__(self, LUTP):
@@ -50,9 +49,15 @@ class Layout:
     def get_mapping(self):
         return self.mapping
 
+    def print_LUPT(self):
+        print self.LUTP
+
 
 def test():
-    a = [1 for i in range(18)]
+    a = [1, 14, 15, 1, 8, 6, 5, 10, 3, 7, 1, 5, 6, 1, 4, 2, 1, 1]
     t = Layout(a)
     t.print_layout()
+    t.print_LUPT()
 
+
+#test()
