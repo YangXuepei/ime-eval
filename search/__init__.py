@@ -33,7 +33,8 @@ def run(times):
         print  best_config
         print "The layout is ", layout
         print "Cost: ", cost
-        pl.print_the_layout(layout)
+        print "show the layout:"
+        pl.print_the_layout(pl.best_for_now)
 
         # save the best result into local persistent storage.
 
