@@ -13,11 +13,14 @@ key_effort = {
 def eval_layout_LUTP_effort(t):
 
     code_table = r.readfile("..\\data\\quanpin_code_table.csv")
-    train_text = r.load_test("..\\data\\train_text.txt")
+    #train_text = r.load_test("..\\data\\train_text.txt")
+    train_character_frequency =  r.readfile("..\\data\\character_frequency.csv")
 
     quanpin_code_effort_table = cal_basic_effort(t)
     quanpin_left_right_effort_table = cal_left_right_effort(t)
-    quanpin_code_frequency_table = cal_frequency(train_text, code_table)
+    quanpin_code_frequency_table = cal_frequency(train_character_frequency, code_table)
+
+
     total_effort = 0.0
     basic_effort = 0.0
     for i in range(len(all_pinyin)):
@@ -32,12 +35,12 @@ def eval_layout_LUTP_effort(t):
     return total_effort
 
 
-def cal_frequency(train_text, code_table):
+def cal_frequency(train_character_frequency, code_table):
     quanpin_code_frequency_table = dict.fromkeys(all_pinyin, 0)
-    for ch in train_text:
+    for ch in train_character_frequency:
         if ch in code_table:
             pinyin = code_table[ch]
-            quanpin_code_frequency_table[pinyin] += 1
+            quanpin_code_frequency_table[pinyin] += int(train_character_frequency[ch])
     return quanpin_code_frequency_table
 
 

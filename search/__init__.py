@@ -22,11 +22,13 @@ switch = {
 }
 
 def run(times):
+    cost_list = []
     for time in range(times):
         best_config = gd.gradient_descend(lyt.domain, ebe.eval_by_effort)
         layout = lyt.Layout(best_config).get_layout()
         cost = ebe.eval_by_effort(best_config)
 
+        cost_list.append(cost)
 
         print "--------------------------------------------------------"
         print "We find the best config:"
@@ -34,7 +36,6 @@ def run(times):
         print "The layout is ", layout
         print "Cost: ", cost
         print "show the layout:"
-        pl.print_the_layout(layout)
 
         # save the best result into local persistent storage.
 
@@ -52,6 +53,7 @@ def run(times):
             ts = timestamp.time()
             f.write(str(ts))
             f.close()
+    return cost_list
 
 
-run(1)
+print run(1)
