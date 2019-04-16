@@ -10,12 +10,12 @@ import simulated_annealing_optimization as sa
 import sys
 
 
-print "We have these search methods:"
-print "     1. gradient descend optimization"
-print "     2. simulated annealing optimization"
-print "     3. ..."
-search_method = raw_input("Please choose a search method:")
-#search_method = 1
+#print "We have these search methods:"
+#print "     1. gradient descend optimization"
+#print "     2. simulated annealing optimization"
+#print "     3. ..."
+#search_method = raw_input("Please choose a search method:")
+search_method = 1
 switch = {
     '1': "gd",
     '2': "sa"
@@ -34,7 +34,7 @@ def run(times):
         print "The layout is ", layout
         print "Cost: ", cost
         print "show the layout:"
-        pl.print_the_layout(pl.best_for_now)
+        pl.print_the_layout(layout)
 
         # save the best result into local persistent storage.
 
@@ -54,4 +54,4 @@ def run(times):
             f.close()
 
 
-run(2)
+run(1)

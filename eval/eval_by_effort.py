@@ -45,9 +45,14 @@ def cal_basic_effort(l):
     quanpin_code_effort_table = dict.fromkeys(all_pinyin, 0)
     mapping = l.get_layout()
     for pinyin in all_pinyin:
-        for c in pinyin:
-            key = mapping[c]
-            quanpin_code_effort_table[pinyin] += key_effort[key]
+        ##这里需要处理一下双拼的effort
+        #for c in pinyin:
+            #key = mapping[c]
+            #quanpin_code_effort_table[pinyin] += key_effort[key]
+        sheng, yun = find_sheng_yun_key(pinyin)
+        sk = mapping[sheng]
+        yk = mapping[yun]
+        quanpin_code_effort_table[pinyin] += key_effort[sk] + key_effort[yk]
 
     #print quanpin_code_effort_table
     return quanpin_code_effort_table
@@ -56,24 +61,43 @@ def cal_left_right_effort(l):
     quanpin_left_right_effort_table = dict.fromkeys(all_pinyin, 0)
     mapping = l.get_layout()
     for pinyin in all_pinyin:
-        count = 0
-        last = 0 if mapping[pinyin[0]] > 9 else 1
-        for c in pinyin:
-            hand = 0 if mapping[pinyin[0]] > 9 else 1
-            count += 1 if hand == last else 0
+        sheng, yun = find_sheng_yun_key(pinyin)
+        sk = mapping[sheng]
+        yk = mapping[yun]
+        sh = 0 if sk > 9 else 1
+        yh = 0 if yk > 9 else 1
+        count = 1 if sh == yh else 0
         quanpin_left_right_effort_table[pinyin] = count
 
     return quanpin_left_right_effort_table
 
 
+def find_sheng_yun_key(pinyin):
+    s, y= ' ', ' '
+    for i in "aeiouv":
+        if pinyin[0] == i:
+            s = ' '
+            y = pinyin
+    if s != ' ' and len(pinyin) > 1:
+        if pinyin[1] == 'h':
+            s = pinyin[0:2]
+            y = pinyin[2:]
+        else:
+            s = pinyin[0]
+            y = pinyin[1:]
+    return s, y
+
+
 def eval_by_effort(domain):
     t = lyt.Layout(domain)
-    result =  eval_layout_LUTP_effort(t)
+    result = eval_layout_LUTP_effort(t)
     return result
 
 
 def test():
     a = [1, 14, 15, 1, 8, 6, 5, 10, 3, 7, 1, 5, 6, 1, 4, 2, 1, 1]
-    eval_by_effort(a)
+    print eval_by_effort(a)
 
-#test()
+
+test()
+#print find_sheng_yun_key('huang')
