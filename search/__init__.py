@@ -15,7 +15,7 @@ import sys
 #print "     2. simulated annealing optimization"
 #print "     3. ..."
 #search_method = raw_input("Please choose a search method:")
-search_method = 1
+search_method = 2
 switch = {
     '1': "gd",
     '2': "sa"
@@ -56,4 +56,4 @@ def run(times):
     return cost_list
 
 
-print run(1)
+print run(20)
