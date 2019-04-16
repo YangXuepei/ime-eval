@@ -102,5 +102,5 @@ def test():
     print eval_by_effort(a)
 
 
-test()
+#test()
 #print find_sheng_yun_key('huang')

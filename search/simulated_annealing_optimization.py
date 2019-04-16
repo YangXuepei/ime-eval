@@ -21,13 +21,17 @@ def simulated_annealing(domain, costfunc):
     annealing_temperature = 10000.0
     cooling_factor = 0.95
 
+    COUNT = 0
+
     #compare current configuration with its neighbors, substitute it with superior neighbor, if any.
     #until no better neighbor is found.
     while annealing_temperature > 0.1:
         best_config = compare_with_one_neighbor(best_config, domain, costfunc, annealing_temperature)
         annealing_temperature *= cooling_factor
+        COUNT += 1
         #print("Current best config: ", best_config, "min cost: ", costfunc(best_config))
-    return best_config, costfunc(best_config)
+    print COUNT
+    return best_config
 
 
 def compare_with_one_neighbor(config, domain, costfunc, annealing_temperature):
