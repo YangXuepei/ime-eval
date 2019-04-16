@@ -24,21 +24,21 @@ def simulated_annealing(domain, costfunc):
     #compare current configuration with its neighbors, substitute it with superior neighbor, if any.
     #until no better neighbor is found.
     while annealing_temperature > 0.1:
-        best_config = compare_with_neighbors(best_config, domain, costfunc, annealing_temperature)
+        best_config = compare_with_one_neighbor(best_config, domain, costfunc, annealing_temperature)
         annealing_temperature *= cooling_factor
         #print("Current best config: ", best_config, "min cost: ", costfunc(best_config))
     return best_config, costfunc(best_config)
 
 
-def compare_with_neighbors(config, domain, costfunc, annealing_temperature):
+def compare_with_one_neighbor(config, domain, costfunc, annealing_temperature):
     best_config = config
     min_cost = costfunc(config)
-    for neighbor in generate_neighbors(config, domain):
-        neighbor_cost = costfunc(neighbor)
-        tolerance_probability = pow(math.e, -(neighbor_cost - min_cost)/ annealing_temperature)
-        if neighbor_cost <= min_cost or random.random() < tolerance_probability: #Note that we allow shifting to neighbor even if the cost are equal.
-            min_cost = neighbor_cost
-            best_config = neighbor
-            #print("Found better neighbor: ", best_config, "Cost: ", min_cost)
-    return best_config
+    neighbor = generate_neighbors(config, domain)[0]
+    neighbor_cost = costfunc(neighbor)
+    tolerance_probability = pow(math.e, -(neighbor_cost - min_cost)/ annealing_temperature)
+    if neighbor_cost <= min_cost or random.random() < tolerance_probability: #Note that we allow shifting to neighbor even if the cost are equal.
+        min_cost = neighbor_cost
+        best_config = neighbor
+        #print("Found better neighbor: ", best_config, "Cost: ", min_cost)
+    return best_config, min_cost
 

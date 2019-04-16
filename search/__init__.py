@@ -56,4 +56,4 @@ def run(times):
     return cost_list
 
 
-print run(20)
+print run(10)
