@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-#
 import random
 import math
-from helper import *
+from neighbor_generator import *
 
 # Note that this python file should be totally blinded with any practical details, for generic purpose.
 

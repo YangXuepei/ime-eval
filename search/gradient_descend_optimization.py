@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-#
 import random
-from helper import *
 import eval.layout as lyt
+from neighbor_generator import *
 
 # Note that this python file should be totally blinded with any practical details, for generic purpose.
 # IN: domain specification, cost function
