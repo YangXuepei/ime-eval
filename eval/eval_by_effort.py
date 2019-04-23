@@ -10,25 +10,28 @@ key_effort = {
     7: 2,   8: 1.5, 9: 1.5,          16: 1.3,   17: 1.3,    18: 1.8
 }
 
+
 def eval_layout_LUTP_effort(t):
 
     code_table = r.readfile("..\\data\\quanpin_code_table.csv")
     #train_text = r.load_test("..\\data\\train_text.txt")
-    train_character_frequency =  r.readfile("..\\data\\character_frequency.csv")
+    train_character_frequency = r.readfile("..\\data\\character_frequency.csv")
 
     quanpin_code_effort_table = cal_basic_effort(t)
     quanpin_left_right_effort_table = cal_left_right_effort(t)
-    quanpin_code_frequency_table = cal_frequency(train_character_frequency, code_table)
-
+    quanpin_code_frequency_table = cal_frequency(
+        train_character_frequency, code_table)
 
     total_effort = 0.0
     basic_effort = 0.0
     for i in range(len(all_pinyin)):
-        basic_effort += quanpin_code_effort_table[all_pinyin[i]] * quanpin_code_frequency_table[all_pinyin[i]]
+        basic_effort += quanpin_code_effort_table[all_pinyin[i]
+                                                  ] * quanpin_code_frequency_table[all_pinyin[i]]
 
     left_right_effort = 0.0
     for i in range(len(all_pinyin)):
-        left_right_effort += quanpin_left_right_effort_table[all_pinyin[i]] * quanpin_code_frequency_table[all_pinyin[i]]
+        left_right_effort += quanpin_left_right_effort_table[all_pinyin[i]
+                                                             ] * quanpin_code_frequency_table[all_pinyin[i]]
 
     total_effort = basic_effort + left_right_effort
 
@@ -40,7 +43,8 @@ def cal_frequency(train_character_frequency, code_table):
     for ch in train_character_frequency:
         if ch in code_table:
             pinyin = code_table[ch]
-            quanpin_code_frequency_table[pinyin] += int(train_character_frequency[ch])
+            quanpin_code_frequency_table[pinyin] += int(
+                train_character_frequency[ch])
     return quanpin_code_frequency_table
 
 
@@ -48,8 +52,8 @@ def cal_basic_effort(l):
     quanpin_code_effort_table = dict.fromkeys(all_pinyin, 0)
     mapping = l.get_layout()
     for pinyin in all_pinyin:
-        ##这里需要处理一下双拼的effort
-        #for c in pinyin:
+        # 这里需要处理一下双拼的effort
+        # for c in pinyin:
             #key = mapping[c]
             #quanpin_code_effort_table[pinyin] += key_effort[key]
         sheng, yun = find_sheng_yun_key(pinyin)
@@ -59,6 +63,7 @@ def cal_basic_effort(l):
 
     #print quanpin_code_effort_table
     return quanpin_code_effort_table
+
 
 def cal_left_right_effort(l):
     quanpin_left_right_effort_table = dict.fromkeys(all_pinyin, 0)
@@ -76,7 +81,7 @@ def cal_left_right_effort(l):
 
 
 def find_sheng_yun_key(pinyin):
-    s, y= ' ', ' '
+    s, y = ' ', ' '
     for i in "aeiouv":
         if pinyin[0] == i:
             s = ' '
@@ -102,5 +107,5 @@ def test():
     print eval_by_effort(a)
 
 
-#test()
+# test()
 #print find_sheng_yun_key('huang')

@@ -25,10 +25,10 @@ def load_test(testname):
     test = test.decode('utf-8')
     return test
 
+
 def load_all_pinyin(filename):
     pinyin = []
     pyfile = open(filename)
     for line in pyfile:
         pinyin.append(line.strip())
     return pinyin
-

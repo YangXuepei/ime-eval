@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-#
-#当量评估
+# 当量评估
 key_effort = {
     'a': 0,
     's': 0,
@@ -29,6 +29,7 @@ key_effort = {
     'p': 2,
 }
 
+
 def eval_by_effort_naive(code_table, train_text):
     code = ''
     sum = 0.0
@@ -41,5 +42,4 @@ def eval_by_effort_naive(code_table, train_text):
     for i in code:
         sum += key_effort[i]
     print("Evaluating by [3] effort:")
-    print('     The sum effort per character is %f'%(sum/num))
-
+    print('     The sum effort per character is %f' % (sum / num))

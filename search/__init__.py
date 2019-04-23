@@ -21,16 +21,18 @@ switch = {
     '2': "sa"
 }
 
+
 def run(times):
     for time in range(times):
-        best_config, cost_list = gd.gradient_descend(lyt.domain, ebe.eval_by_effort)
+        best_config, cost_list = gd.gradient_descend(
+            lyt.domain, ebe.eval_by_effort)
         #best_config = sa.simulated_annealing(lyt.domain, ebe.eval_by_effort)
         layout = lyt.Layout(best_config).get_layout()
         cost = ebe.eval_by_effort(best_config)
 
         print "--------------------------------------------------------"
         print "We find the best config:"
-        print  best_config
+        print best_config
         print "The layout is ", layout
         print "Cost: ", cost
         print "show the layout:"
