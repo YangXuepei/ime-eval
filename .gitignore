@@ -111,3 +111,7 @@ venv.bak/
 dmypy.json
 *.xml
 .idea/ime-eval.iml
+
+# VSCode
+.vscode/
+.history/
