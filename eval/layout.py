@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-#
 from enum import Enum
 
-#domain list that specifies the domain of every elements of LUTP format.
-domain = [[1, 18-i] for i in range(18)]
+# domain list that specifies the domain of every elements of LUTP format.
+domain = [[1, 18 - i] for i in range(18)]
 
-#26 English letters
+# 26 English letters
 #letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 #combination = ['i','a','n','e','u','h','o','g','d','s','zy','lj','bw','xm','tc','kq','rf','pv']
@@ -13,7 +13,7 @@ combination = [['h','p','a','ua'], ['sh','en','in'], ['zh','ang','iao'], ['b','a
                ['l','ai','ue'], ['d','u'], ['y','eng','ing'], ['w','z','e'], ['j','k','i'], ['n','r','an'],
                ['ch','iang','ui'], ['q', ' ','ian','uang'], ['g','ei','un'], ['c','iu','ou'], ['t','er','ong'], ['f','ia','uo']]
 
-r = range(1,19)
+r = range(1, 19)
 
 
 class Layout:
@@ -24,7 +24,7 @@ class Layout:
         r = range(1, 19)
         for i in range(18):
             #key = combination[i]
-            position = r[LUTP[i]-1]
+            position = r[LUTP[i] - 1]
             r.remove(position)
            # temp[key] = position
             temp[i] = position
@@ -40,7 +40,7 @@ class Layout:
             return False
 
     def add_key(self, letter, key):
-        if not letter in self.mapping:
+        if letter not in self.mapping:
             self.mapping[letter] = key
 
     def exchange_key(self, letterA, letterB):
@@ -67,4 +67,4 @@ def test():
    # t.print_LUPT()
 
 
-#test()
+# test()

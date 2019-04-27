@@ -2,7 +2,6 @@
 # 平均每个字敲击键盘次数
 
 
-
 def eval_by_avg_length(code_table, train_text):
     length = 0.0
     sum = 0.0

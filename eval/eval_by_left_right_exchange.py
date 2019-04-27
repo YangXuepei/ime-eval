@@ -33,4 +33,5 @@ def eval_by_left_right_exchange(code_table, train_text):
             change_time += 1
             last = ch
     print("Evaluating by [2] left-right exchange frequency:")
-    print("    The left-right exchange frequency is %f " %(change_time/len(new_code)))
+    print("    The left-right exchange frequency is %f " %
+          (change_time / len(new_code)))

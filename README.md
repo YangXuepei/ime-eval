@@ -10,10 +10,10 @@ For decoupling purpose, different layers are inclined to be implemented within d
 
 ## How to use
 
-First, make sure Python2 is installed and added to `PATH`. If you have python3 installed already and don't want to messy up with the environment thing, then the popular package manage system [Anaconda](https://www.anaconda.com/) is highly recommended.
+First, make sure `Python 2.7` is installed and added to `PATH`. If you have `Python >=3.0` installed already and don't want to messy up with the environment thing, then the popular package manage tool [Anaconda](https://www.anaconda.com/) is highly recommended.
 
 ```bash
-$ python main.py
+python eval/main.py
 ```
 
 Follow the interactive command line prompt.
@@ -68,6 +68,6 @@ Follow the interactive command line prompt.
 
 ## License
 
-No license yet, since it is not an open-sourced repository.
+[WTFPL 2.0](./LICENSE)
 
 ## Changelog
