@@ -7,8 +7,8 @@ def print_the_layout(layout):
     for i in layout:
         result[layout[i]] += i + ' '
 
-    print result[1],'\t\t',result[2],'\t\t',result[3],'\t\t\t',result[10], '\t\t', result[11], '\t\t', result[12]
-    print result[4],'\t\t',result[5],'\t\t',result[6],'\t\t\t',result[13], '\t\t', result[14], '\t\t', result[15]
-    print result[7],'\t\t',result[8],'\t\t',result[9],'\t\t\t',result[16], '\t\t', result[17], '\t\t', result[18]
+    print result[1],'\t\t\t',result[2],'\t\t\t',result[3],'\t\t\t\t',result[10], '\t\t\t', result[11], '\t\t\t', result[12]
+    print result[4],'\t\t\t',result[5],'\t\t\t',result[6],'\t\t\t\t',result[13], '\t\t\t', result[14], '\t\t\t', result[15]
+    print result[7],'\t\t\t',result[8],'\t\t\t',result[9],'\t\t\t\t',result[16], '\t\t\t', result[17], '\t\t\t', result[18]
 
 #print_the_layout(l)
