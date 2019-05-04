@@ -10,10 +10,10 @@ import simulated_annealing_optimization as sa
 import sys
 
 
-#print "We have these search methods:"
-#print "     1. gradient descend optimization"
-#print "     2. simulated annealing optimization"
-#print "     3. ..."
+# print "We have these search methods:"
+# print "     1. gradient descend optimization"
+# print "     2. simulated annealing optimization"
+# print "     3. ..."
 #search_method = raw_input("Please choose a search method:")
 search_method = 2
 switch = {

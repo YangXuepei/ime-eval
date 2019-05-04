@@ -31,7 +31,7 @@ class Layout:
         for i in temp.keys():
             for j in combination[i]:
                 self.mapping[j] = temp[i]
-        #print self.mapping
+        # print self.mapping
 
     def is_complete(self):
         if len(self.mapping) == 18:

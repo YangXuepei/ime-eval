@@ -44,7 +44,7 @@ for i in range(1, 13):
 
 
 #eval_type = None
-#while eval_type != "q":
+# while eval_type != "q":
 #    b.show_options()
 #    eval_type = raw_input("Please choose a evaluation standard: ")
 #    if eval_type is not None:

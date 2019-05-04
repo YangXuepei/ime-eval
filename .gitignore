@@ -109,6 +109,12 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# VSCode
+.vscode/
+.history/
+
+# Via Xuepei
 *.xml
 .idea/ime-eval.iml
 search/process_layout.py

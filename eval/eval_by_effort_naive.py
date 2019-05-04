@@ -48,4 +48,4 @@ def eval_by_effort_naive(code_table, train_text):
         sum += key_effort[i]
     #print("Evaluating by [3] effort:")
     #print('     The sum effort per character is %f' % (sum / num))
-    return sum/num
+    return sum / num

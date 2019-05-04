@@ -5,9 +5,9 @@ import layout as lyt
 all_pinyin = r.load_all_pinyin("..\\data\\all_pinyin.txt")
 # 所有unique的拼音组合
 key_effort = {
-    1:1.5,   2:1.2 ,     3: 1.5,            10: 1.5,   11:1.2,    12:1.5,
-    4:1.2,   5: 1,        6: 1.2,            13: 1.2 ,   14: 1,   15:1.2 ,
-    7:1.5,   8: 1.2,      9: 1.5,            16: 1.5,   17:1.2 ,    18:1.5
+    1: 1.5, 2: 1.2, 3: 1.5, 10: 1.5, 11: 1.2, 12: 1.5,
+    4: 1.2, 5: 1, 6: 1.2, 13: 1.2, 14: 1, 15: 1.2,
+    7: 1.5, 8: 1.2, 9: 1.5, 16: 1.5, 17: 1.2, 18: 1.5
 }
 
 
@@ -19,16 +19,19 @@ def eval_layout_LUTP_effort(t):
 
     quanpin_code_effort_table = cal_basic_effort(t)
     quanpin_left_right_effort_table = cal_left_right_effort(t)
-    quanpin_code_frequency_table = cal_frequency(train_character_frequency, code_table)
+    quanpin_code_frequency_table = cal_frequency(
+        train_character_frequency, code_table)
 
     total_effort = 0.0
     basic_effort = 0.0
     for i in range(len(all_pinyin)):
-        basic_effort += quanpin_code_effort_table[all_pinyin[i]] * quanpin_code_frequency_table[all_pinyin[i]]
+        basic_effort += quanpin_code_effort_table[all_pinyin[i]
+                                                  ] * quanpin_code_frequency_table[all_pinyin[i]]
 
     left_right_effort = 0.0
     for i in range(len(all_pinyin)):
-        left_right_effort += quanpin_left_right_effort_table[all_pinyin[i]] * quanpin_code_frequency_table[all_pinyin[i]]
+        left_right_effort += quanpin_left_right_effort_table[all_pinyin[i]
+                                                             ] * quanpin_code_frequency_table[all_pinyin[i]]
 
     total_effort = basic_effort + left_right_effort
 
@@ -111,18 +114,21 @@ def eval_layout_LUTP_effort_local(t):
 
     quanpin_code_effort_table = cal_basic_effort(t)
     quanpin_left_right_effort_table = cal_left_right_effort(t)
-    quanpin_code_frequency_table = cal_frequency(train_character_frequency, code_table)
+    quanpin_code_frequency_table = cal_frequency(
+        train_character_frequency, code_table)
 
     total_effort = 0.0
     basic_effort = 0.0
     for i in range(len(all_pinyin)):
-        basic_effort += quanpin_code_effort_table[all_pinyin[i]] * quanpin_code_frequency_table[all_pinyin[i]]
+        basic_effort += quanpin_code_effort_table[all_pinyin[i]
+                                                  ] * quanpin_code_frequency_table[all_pinyin[i]]
 
     left_right_effort = 0.0
     for i in range(len(all_pinyin)):
-        left_right_effort += quanpin_left_right_effort_table[all_pinyin[i]] * quanpin_code_frequency_table[all_pinyin[i]]
+        left_right_effort += quanpin_left_right_effort_table[all_pinyin[i]
+                                                             ] * quanpin_code_frequency_table[all_pinyin[i]]
 
-    total_effort = basic_effort + 0.65*left_right_effort
+    total_effort = basic_effort + 0.65 * left_right_effort
 
     return total_effort
 
@@ -136,6 +142,7 @@ def cal_sum(train_character_frequency, code_table):
                 train_character_frequency[ch])
     return total_character
 
+
 def test():
     code_table = r.readfile("..\\data\\quanpin_code_table.csv")
     train_character_frequency = r.readfile("..\\data\\character_frequency.csv")
@@ -145,6 +152,7 @@ def test():
     sum_effort = eval_layout_LUTP_effort_local(t)
     print sum_effort
     print total_character
-    print sum_effort/total_character
+    print sum_effort / total_character
+
 
 test()
